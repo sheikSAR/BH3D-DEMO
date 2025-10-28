@@ -12,12 +12,16 @@ const Hero = () => {
 
       useGSAP(() => {
             // Initialize ScrollSmoother for smooth scrolling
-            ScrollSmoother.create({
-                  wrapper: "body",
-                  content: "html",
-                  smooth: 1.5,
-                  effects: true,
-            });
+            try {
+                  ScrollSmoother.create({
+                        wrapper: "body",
+                        content: "main",
+                        smooth: 1.5,
+                        effects: true,
+                  });
+            } catch (error) {
+                  console.log("ScrollSmoother initialization skipped", error);
+            }
 
             const earthRotation = gsap.to("#earth", {
                   rotation: "+=360",
