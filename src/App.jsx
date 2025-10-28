@@ -1,9 +1,18 @@
 import React from 'react'
 import './index.css'
+import Hero from './pages/Hero.jsx'
+import Nav from './pages/nav.jsx'
+import Content from './pages/Content.jsx'
+import Mentors from './pages/Mentors'
 
 const App = () => {
   return (
-    <div>App</div>
+    <main>
+      <Nav />
+      <Hero />
+      <Content />
+      <Mentors />
+    </main>
   )
 }
 

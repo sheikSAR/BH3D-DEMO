@@ -2,8 +2,8 @@ import React from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Galaxy from './Galaxy.jsx';
-import FluidSmoke from './FluidSmoke.jsx';
+import Galaxy from '../components/Galaxy.jsx';
+import FluidSmoke from '../components/FluidSmoke.jsx';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -112,11 +112,6 @@ const Hero = () => {
                               className="absolute w-48 sm:w-64 md:w-80 left-1/2 -translate-x-1/2 bottom-0 z-10
                                filter drop-shadow-[0_0_10px_rgba(0,0,0,0.7)] sm:drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_20px_rgba(0,0,0,0.9)]"
                         />
-                  </div>
-
-                  {/* Scroll Space */}
-                  <div className="h-screen bg-black flex items-center justify-center">
-                        <h2 className="text-4xl font-bold text-white">This is the next section</h2>
                   </div>
             </>
       )
