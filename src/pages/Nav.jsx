@@ -29,14 +29,14 @@ const nav = () => {
       }, []);
 
       return (
-            <nav>
-                  <div>
-                        <a href="#home" className='flex items-center gap-2'>
-                              <img src="https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png" alt="" />
+            <nav className="nav-container">
+                  <div className="nav-content">
+                        <a href="#home" className='nav-logo'>
+                              <img src="https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png" alt="BroskiesHub Logo" className="logo-image" />
                         </a>
-                        <ul>
+                        <ul className="nav-links">
                               {navLinks.map((link) => (
-                                    <li key={link.id}>{link.title}</li>
+                                    <li key={link.id} className="nav-link-item">{link.title}</li>
                               ))}
                         </ul>
                   </div>
