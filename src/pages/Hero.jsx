@@ -11,15 +11,37 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 const Hero = () => {
 
       useGSAP(() => {
+            // Initialize ScrollSmoother for smooth scrolling
+            ScrollSmoother.create({
+                  wrapper: "body",
+                  content: "html",
+                  smooth: 1.5,
+                  effects: true,
+            });
 
             const earthRotation = gsap.to("#earth", {
                   rotation: "+=360",
-                  duration: 300, // Very Slow base speed (5 minutes for one rotation)
+                  duration: 300,
                   ease: "none",
                   repeat: -1,
             });
-            // Set initial very slow speed
-            earthRotation.timeScale(0.1); // Adjust 0.1 for desired default slow speed
+            earthRotation.timeScale(0.1);
+
+            // Animate hero text - staggered fade and slide up
+            gsap.timeline()
+                  .from("#hero-tagline", {
+                        opacity: 0,
+                        y: 30,
+                        duration: 0.8,
+                        ease: "power2.out",
+                  }, 0.2)
+                  .from("#hero-tagline .tagline-word", {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        stagger: 0.15,
+                  }, 0.4);
 
             // --- Main Scroll Timeline (controls Rocket and Moon) ---
             const scrollTimeline = gsap.timeline({
@@ -28,11 +50,9 @@ const Hero = () => {
                         start: "top top",
                         end: "bottom top",
                         scrub: true,
-                        // markers: true,
                   }
             });
 
-            // Add Rocket and Moon animations to the timeline
             scrollTimeline
                   .to("#rocket", {
                         y: "-150vh",
@@ -44,24 +64,18 @@ const Hero = () => {
                   }, '<');
 
             // --- Earth Scroll Speed Control ---
-            // Use a separate ScrollTrigger ONLY to adjust the timeScale during scroll
             ScrollTrigger.create({
                   trigger: "#hero-section",
                   start: "top top",
                   end: "bottom top",
                   scrub: true,
-                  // markers: true, // Optional for debugging
                   onUpdate: (self) => {
-                        // Map scroll progress (0 to 1) to timeScale
-                        // Base speed = 0.1 (matches initial), Max speed = 20
                         const newTimeScale = gsap.utils.mapRange(0, 1, 0.5, 20)(self.progress);
                         earthRotation.timeScale(newTimeScale);
                   },
-                  // Reset to base speed when scroll leaves the trigger area
                   onLeave: () => earthRotation.timeScale(0.1),
                   onEnterBack: () => earthRotation.timeScale(0.1),
             });
-
 
       }, [])
 
