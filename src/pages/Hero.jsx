@@ -86,6 +86,18 @@ const Hero = () => {
                         className="h-screen relative overflow-hidden"
                   >
 
+                        {/* Hero Tagline */}
+                        <div id="hero-tagline" className="absolute top-1/3 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4 sm:px-6">
+                              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-modern-negra text-white leading-tight">
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">Build</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">your</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">portfolio</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">and</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">launch</span>
+                                    <span className="tagline-word inline-block">your career</span>
+                              </h2>
+                        </div>
+
                         {/* Layer 1: z-[0] (Galaxy Background) */}
                         <div className="absolute inset-0 z-[0]">
                               <Galaxy
