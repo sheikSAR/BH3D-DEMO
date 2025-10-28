@@ -11,18 +11,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 const Hero = () => {
 
       useGSAP(() => {
-            // Initialize ScrollSmoother for smooth scrolling
-            try {
-                  ScrollSmoother.create({
-                        wrapper: "body",
-                        content: "main",
-                        smooth: 1.5,
-                        effects: true,
-                  });
-            } catch (error) {
-                  console.log("ScrollSmoother initialization skipped", error);
-            }
-
             const earthRotation = gsap.to("#earth", {
                   rotation: "+=360",
                   duration: 300,
