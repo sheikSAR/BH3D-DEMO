@@ -2,10 +2,11 @@ import React from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import Galaxy from '../components/Galaxy.jsx';
 import FluidSmoke from '../components/FluidSmoke.jsx';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 const Hero = () => {
 
@@ -118,4 +119,3 @@ const Hero = () => {
 }
 
 export default Hero
-
