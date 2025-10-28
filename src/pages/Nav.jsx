@@ -32,7 +32,7 @@ const nav = () => {
             <nav className="nav-container">
                   <div className="nav-content">
                         <a href="#home" className='nav-logo'>
-                              <img src="https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png" alt="BroskiesHub Logo" className="logo-image" />
+              <img src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761673365/Untitled_design_1_y1sd9o.png" alt="BroskiesHub Logo" className="logo-image" />
                         </a>
                         <ul className="nav-links">
                               {navLinks.map((link) => (
