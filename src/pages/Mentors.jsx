@@ -23,7 +23,7 @@ const Mentors = () => {
                                     enableTilt={true}
                                     enableMobileTilt={false}
                                     showBehindGradient={true}
-                            iconUrl='https://res.cloudinary.com/dk2wudmxh/image/upload/v1761711088/BH_Profile_banner_exwmvg.png'
+                            iconUrl='https://res.cloudinary.com/dk2wudmxh/image/upload/v1761711311/BH_Profile_banner_plt4bo.png'
                                     onContactClick={() => console.log("Contact clicked")}
                               />
                         ))}
