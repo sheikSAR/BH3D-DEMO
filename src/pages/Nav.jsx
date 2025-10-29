@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { navLinks } from '../../constants'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const nav = () => {
+      const [isMenuOpen, setIsMenuOpen] = useState(false)
 
       useGSAP(() => {
             const timeline = gsap.timeline({
@@ -28,19 +29,49 @@ const nav = () => {
             );
       }, []);
 
+      const toggleMenu = () => {
+            setIsMenuOpen(!isMenuOpen)
+      }
+
+      const closeMenu = () => {
+            setIsMenuOpen(false)
+      }
+
       return (
-            <nav>
-                  <div>
-                        <a href="#home" className='flex items-center gap-2'>
-                              <img src="https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png" alt="" />
-                        </a>
-                        <ul>
-                              {navLinks.map((link) => (
-                                    <li key={link.id}>{link.title}</li>
-                              ))}
-                        </ul>
+            <>
+                  <nav className="nav-container">
+                        <div className="nav-content">
+                              <a href="#home" className='nav-logo'>
+                                    <img src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761673365/Untitled_design_1_y1sd9o.png" alt="BroskiesHub Logo" className="logo-image" />
+                              </a>
+                              <button className="hamburger-btn" onClick={toggleMenu} aria-label="Toggle menu">
+                                    <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+                                    <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+                                    <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+                              </button>
+                              <ul className="nav-links">
+                                    {navLinks.map((link) => (
+                                          <li key={link.id} className="nav-link-item">{link.title}</li>
+                                    ))}
+                              </ul>
+                        </div>
+                  </nav>
+
+                  {/* Mobile Sidebar Menu */}
+                  <div className={`mobile-nav-sidebar ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}>
+                        <div className="mobile-nav-content" onClick={(e) => e.stopPropagation()}>
+                              <button className="mobile-nav-close" onClick={closeMenu} aria-label="Close menu">
+                                    <span className="close-line"></span>
+                                    <span className="close-line"></span>
+                              </button>
+                              <ul className="mobile-nav-links">
+                                    {navLinks.map((link) => (
+                                          <li key={link.id} className="mobile-nav-link-item" onClick={closeMenu}>{link.title}</li>
+                                    ))}
+                              </ul>
+                        </div>
                   </div>
-            </nav>
+            </>
 
       )
 }

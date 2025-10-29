@@ -16,8 +16,10 @@ const FluidSmoke = ({ targetId }) => {
 
         'use strict';
 
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+        // Set canvas resolution to match display size with proper pixel ratio
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.floor(canvas.clientWidth * dpr);
+        canvas.height = Math.floor(canvas.clientHeight * dpr);
 
         let config = {
             TEXTURE_DOWNSAMPLE: 1,

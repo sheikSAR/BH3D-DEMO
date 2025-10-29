@@ -4,19 +4,15 @@ import ProfileCard from '../components/ProfileCard.jsx'
 
 const Mentors = () => {
       return (
-            <div className="w-full py-16 px-4">
-                  {/* This is the horizontal scrolling container:
-        - 'flex': Enables flexbox layout (defaults to a row).
-        - 'overflow-x-auto': Enables horizontal scrolling if content overflows.
-        - 'gap-4': Adds a 16px gap between the flex items (the cards).
-        - 'max-w-7xl mx-auto': Constrains width and centers the container.
-        - 'scrollbar-none...': Hides the scrollbar.
-        - 'py-4': Adds a little vertical padding *inside* the scroll area.
-      */}
-                  <div className="flex overflow-x-auto gap-8 w-100% mx-auto scrollbar-none [&::-webkit-scrollbar]:hidden ">
+            <div className="mentors-wrapper">
+                  <div className="mentors-header">
+                        <h2 className="mentors-title">Meet Our Mentors</h2>
+                        <p className="mentors-subtitle">Connect with industry experts</p>
+                  </div>
+                  <div className="mentors-container">
                         {mentors.map((mentor) => (
                               <ProfileCard
-                                    key={mentor.id} // Key on the ProfileCard component
+                                    key={mentor.id}
                                     name={mentor.name}
                                     title={mentor.title}
                                     handle={mentor.name}
@@ -27,7 +23,7 @@ const Mentors = () => {
                                     enableTilt={true}
                                     enableMobileTilt={false}
                                     showBehindGradient={true}
-                                    iconUrl='https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png'
+                            iconUrl='https://res.cloudinary.com/dk2wudmxh/image/upload/v1761711311/BH_Profile_banner_plt4bo.png'
                                     onContactClick={() => console.log("Contact clicked")}
                               />
                         ))}

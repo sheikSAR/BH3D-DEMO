@@ -10,15 +10,29 @@ gsap.registerPlugin(ScrollTrigger)
 const Hero = () => {
 
       useGSAP(() => {
-
             const earthRotation = gsap.to("#earth", {
                   rotation: "+=360",
-                  duration: 300, // Very Slow base speed (5 minutes for one rotation)
+                  duration: 300,
                   ease: "none",
                   repeat: -1,
             });
-            // Set initial very slow speed
-            earthRotation.timeScale(0.1); // Adjust 0.1 for desired default slow speed
+            earthRotation.timeScale(0.1);
+
+            // Animate hero text - staggered fade and slide up
+            gsap.timeline()
+                  .from("#hero-tagline", {
+                        opacity: 0,
+                        y: 30,
+                        duration: 0.8,
+                        ease: "power2.out",
+                  }, 0.2)
+                  .from("#hero-tagline .tagline-word", {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        stagger: 0.15,
+                  }, 0.4);
 
             // --- Main Scroll Timeline (controls Rocket and Moon) ---
             const scrollTimeline = gsap.timeline({
@@ -27,11 +41,9 @@ const Hero = () => {
                         start: "top top",
                         end: "bottom top",
                         scrub: true,
-                        // markers: true,
                   }
             });
 
-            // Add Rocket and Moon animations to the timeline
             scrollTimeline
                   .to("#rocket", {
                         y: "-150vh",
@@ -43,24 +55,18 @@ const Hero = () => {
                   }, '<');
 
             // --- Earth Scroll Speed Control ---
-            // Use a separate ScrollTrigger ONLY to adjust the timeScale during scroll
             ScrollTrigger.create({
                   trigger: "#hero-section",
                   start: "top top",
                   end: "bottom top",
                   scrub: true,
-                  // markers: true, // Optional for debugging
                   onUpdate: (self) => {
-                        // Map scroll progress (0 to 1) to timeScale
-                        // Base speed = 0.1 (matches initial), Max speed = 20
                         const newTimeScale = gsap.utils.mapRange(0, 1, 0.5, 20)(self.progress);
                         earthRotation.timeScale(newTimeScale);
                   },
-                  // Reset to base speed when scroll leaves the trigger area
                   onLeave: () => earthRotation.timeScale(0.1),
                   onEnterBack: () => earthRotation.timeScale(0.1),
             });
-
 
       }, [])
 
@@ -70,6 +76,18 @@ const Hero = () => {
                         id="hero-section"
                         className="h-screen relative overflow-hidden"
                   >
+
+                        {/* Hero Tagline */}
+                        <div id="hero-tagline" className="absolute top-1/3 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4 sm:px-6">
+                              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-modern-negra text-white leading-tight">
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">Build</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">your</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">portfolio</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">and</span>
+                                    <span className="tagline-word inline-block mr-1 sm:mr-2">launch</span>
+                                    <span className="tagline-word inline-block">your career</span>
+                              </h2>
+                        </div>
 
                         {/* Layer 1: z-[0] (Galaxy Background) */}
                         <div className="absolute inset-0 z-[0]">
@@ -85,14 +103,14 @@ const Hero = () => {
                               id="earth"
                               src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625964/earth_resized_oupmx9.png"
                               alt="Earth in space"
-                              className="absolute z-[1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] md:w-[70vh] md:h-[70vh] lg:w-[80vh] lg:h-[80vh] object-cover
-                               filter drop-shadow-[0_0_20px_rgba(0,100,255,0.8)] sm:drop-shadow-[0_0_30px_rgba(0,100,255,0.9)] lg:drop-shadow-[0_0_40px_rgba(0,100,255,1)]"
+                              className="absolute z-[1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] sm:w-[45vw] sm:h-[45vw] md:w-[40vh] md:h-[40vh] lg:w-[50vh] lg:h-[50vh] xl:w-[55vh] xl:h-[55vh] object-cover
+                               filter drop-shadow-[0_0_10px_rgba(0,100,255,0.6)] sm:drop-shadow-[0_0_20px_rgba(0,100,255,0.8)] lg:drop-shadow-[0_0_30px_rgba(0,100,255,0.9)]"
                         />
 
                         {/* Layer 3: z-[2] (Moon Landscape) */}
                         <img
                               id="moon"
-                              src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625970/moon_resized_i4ys2t.png"
+              src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761713593/Half_Moon_ssdafp.png"
                               alt="Moon landscape"
                               className="absolute z-[2] bottom-0 w-full h-auto object-cover"
                         />
@@ -109,8 +127,8 @@ const Hero = () => {
                               id="rocket"
                               src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625965/HERO_Jet_resized_fjf0nm.png"
                               alt="Rocket launching"
-                              className="absolute w-48 sm:w-64 md:w-80 left-1/2 -translate-x-1/2 bottom-0 z-10
-                               filter drop-shadow-[0_0_10px_rgba(0,0,0,0.7)] sm:drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_20px_rgba(0,0,0,0.9)]"
+              className="absolute w-[30vw] sm:w-48 md:w-56 lg:w-72 xl:w-80 left-1/2 -translate-x-1/2  bottom-[5%] z-10 h-auto
+                               filter drop-shadow-[0_0_8px_rgba(0,0,0,0.6)] sm:drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_20px_rgba(0,0,0,0.9)]"
                         />
                   </div>
             </>
@@ -118,4 +136,3 @@ const Hero = () => {
 }
 
 export default Hero
-
