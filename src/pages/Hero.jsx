@@ -127,8 +127,8 @@ const Hero = () => {
                               id="rocket"
                               src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625965/HERO_Jet_resized_fjf0nm.png"
                               alt="Rocket launching"
-                              className="absolute w-48 sm:w-64 md:w-80 left-1/2 -translate-x-1/2 bottom-0 z-10
-                               filter drop-shadow-[0_0_10px_rgba(0,0,0,0.7)] sm:drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_20px_rgba(0,0,0,0.9)]"
+                              className="absolute w-[30vw] sm:w-48 md:w-56 lg:w-72 xl:w-80 left-1/2 -translate-x-1/2 bottom-0 z-10 h-auto
+                               filter drop-shadow-[0_0_8px_rgba(0,0,0,0.6)] sm:drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_20px_rgba(0,0,0,0.9)]"
                         />
                   </div>
             </>
