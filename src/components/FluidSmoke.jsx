@@ -21,15 +21,6 @@ const FluidSmoke = ({ targetId }) => {
         canvas.width = Math.floor(canvas.clientWidth * dpr);
         canvas.height = Math.floor(canvas.clientHeight * dpr);
 
-        // Handle window resize for responsiveness
-        const handleResize = () => {
-            canvas.width = Math.floor(canvas.clientWidth * dpr);
-            canvas.height = Math.floor(canvas.clientHeight * dpr);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-
         let config = {
             TEXTURE_DOWNSAMPLE: 1,
             DENSITY_DISSIPATION: 0.96, // Adjusted from 0.98 to 0.96 (more aggressive dissipation)
