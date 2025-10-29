@@ -61,8 +61,8 @@
 }
 
 .pc-card {
-  height: 80svh;
-  max-height: 540px;
+  height: 60svh;
+  max-height: 420px;
   display: grid;
   aspect-ratio: 0.718;
   border-radius: var(--card-radius);
