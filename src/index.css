@@ -77,7 +77,11 @@ body {
     }
 
     .nav-content {
-        @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+        @apply flex flex-row md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto relative;
+
+        @media (max-width: 768px) {
+            justify-content: center;
+        }
     }
 
     .nav-logo {
