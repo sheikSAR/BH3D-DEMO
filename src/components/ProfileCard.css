@@ -432,6 +432,12 @@
   }
 }
 
+@media (max-width: 991px) {
+  .pc-card {
+    margin-top: 3px;
+  }
+}
+
 @media (max-width: 768px) {
   .pc-card {
     height: 70svh;
