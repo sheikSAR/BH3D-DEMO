@@ -490,8 +490,8 @@
 
 @media (max-width: 480px) {
   .pc-card {
-    height: 60svh;
-    max-height: 380px;
+    height: 45svh;
+    max-height: 320px;
   }
 
   .pc-details {
