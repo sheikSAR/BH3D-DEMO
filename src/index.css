@@ -69,11 +69,11 @@ body {
     }
 
     nav {
-        @apply fixed z-50 w-full;
+        @apply fixed z-50 w-full backdrop-blur-md bg-black/30;
     }
 
     .nav-container {
-        @apply fixed z-50 w-full;
+        @apply fixed z-50 w-full backdrop-blur-md bg-black/30;
     }
 
     .nav-content {
@@ -81,19 +81,89 @@ body {
     }
 
     .nav-logo {
-        @apply cursor-pointer flex items-center gap-2;
+        @apply cursor-pointer flex items-center gap-2 mr-auto;
 
         .logo-image {
             @apply w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12;
         }
     }
 
+    .hamburger-btn {
+        @apply hidden md:hidden flex-col gap-1.5 bg-transparent border-0 cursor-pointer p-2 z-[100];
+
+        @media (max-width: 768px) {
+            @apply flex;
+        }
+    }
+
+    .hamburger-line {
+        @apply w-6 h-0.5 bg-white rounded transition-all duration-300;
+
+        &.active:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        &.active:nth-child(2) {
+            opacity: 0;
+        }
+
+        &.active:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+    }
+
     .nav-links {
-        @apply flex-center lg:gap-12 gap-7;
+        @apply hidden md:flex flex-center lg:gap-12 gap-7;
     }
 
     .nav-link-item {
         @apply cursor-pointer text-nowrap md:text-base text-xs sm:text-sm hover:text-yellow transition-colors duration-200;
+    }
+
+    .mobile-nav-sidebar {
+        @apply fixed inset-0 z-40 md:hidden transition-opacity duration-300 opacity-0 pointer-events-none;
+        background: rgba(0, 0, 0, 0);
+
+        &.active {
+            @apply opacity-100 pointer-events-auto;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .mobile-nav-content {
+        @apply fixed left-0 top-0 h-screen w-80 backdrop-blur-lg bg-black/40 border-r border-white/10 z-50 transform transition-transform duration-300 -translate-x-full overflow-y-auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05);
+
+        .mobile-nav-sidebar.active & {
+            @apply translate-x-0;
+        }
+    }
+
+    .mobile-nav-close {
+        @apply absolute top-6 right-6 bg-transparent border-0 cursor-pointer p-2 z-50;
+        width: 32px;
+        height: 32px;
+    }
+
+    .close-line {
+        @apply absolute w-6 h-0.5 bg-white rounded transition-all duration-300;
+
+        &:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            transform: rotate(-45deg);
+        }
+    }
+
+    .mobile-nav-links {
+        @apply flex flex-col gap-0 pt-24 px-6;
+    }
+
+    .mobile-nav-link-item {
+        @apply cursor-pointer text-base py-4 px-4 border-b border-white/5 hover:text-yellow hover:bg-white/5 transition-colors duration-200 rounded;
     }
 
     nav p {
