@@ -110,7 +110,7 @@ const Hero = () => {
                         {/* Layer 3: z-[2] (Moon Landscape) */}
                         <img
                               id="moon"
-                              src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625970/moon_resized_i4ys2t.png"
+              src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761713593/Half_Moon_ssdafp.png"
                               alt="Moon landscape"
                               className="absolute z-[2] bottom-0 w-full h-auto object-cover"
                         />
