@@ -103,7 +103,7 @@ const Hero = () => {
                               id="earth"
                               src="https://res.cloudinary.com/dk2wudmxh/image/upload/v1761625964/earth_resized_oupmx9.png"
                               alt="Earth in space"
-                              className="absolute z-[1] bottom-[20%] left-1/2 -translate-x-1/2 w-[40vw] h-[40vw] sm:w-[45vw] sm:h-[45vw] md:w-[40vh] md:h-[40vh] lg:w-[50vh] lg:h-[50vh] xl:w-[55vh] xl:h-[55vh] object-cover
+                              className="absolute z-[1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] sm:w-[45vw] sm:h-[45vw] md:w-[40vh] md:h-[40vh] lg:w-[50vh] lg:h-[50vh] xl:w-[55vh] xl:h-[55vh] object-cover
                                filter drop-shadow-[0_0_10px_rgba(0,100,255,0.6)] sm:drop-shadow-[0_0_20px_rgba(0,100,255,0.8)] lg:drop-shadow-[0_0_30px_rgba(0,100,255,0.9)]"
                         />
 
