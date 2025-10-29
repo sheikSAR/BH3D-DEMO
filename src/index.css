@@ -81,15 +81,19 @@ body {
     }
 
     .nav-logo {
-        @apply cursor-pointer flex items-center gap-2 mr-auto;
+        @apply cursor-pointer flex items-center gap-2;
 
         .logo-image {
             @apply w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12;
         }
+
+        @media (max-width: 768px) {
+            @apply ml-16;
+        }
     }
 
     .hamburger-btn {
-        @apply hidden md:hidden flex-col gap-1.5 bg-transparent border-0 cursor-pointer p-2 z-[100];
+        @apply hidden md:hidden flex-col gap-1.5 bg-transparent border-0 cursor-pointer p-2 z-[100] absolute left-4 top-1/2 -translate-y-1/2;
 
         @media (max-width: 768px) {
             @apply flex;
