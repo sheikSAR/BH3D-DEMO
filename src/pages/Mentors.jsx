@@ -23,7 +23,7 @@ const Mentors = () => {
                                     enableTilt={true}
                                     enableMobileTilt={false}
                                     showBehindGradient={true}
-                                    iconUrl='https://res.cloudinary.com/broskieshub/image/upload/v1756907359/broskieshub/qrdtvpfzqaw0bsu8rcl0.png'
+                            iconUrl='https://res.cloudinary.com/dk2wudmxh/image/upload/v1756140457/My%20Brand/bros_jumgni.png'
                                     onContactClick={() => console.log("Contact clicked")}
                               />
                         ))}
